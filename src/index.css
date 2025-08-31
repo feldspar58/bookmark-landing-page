@@ -1,8 +1,10 @@
-/* body{
-  padding: 20px;
-  
-} */
+body {
+  position: relative;
+}
 
+main {
+  padding: 25px;
+}
 .navbar {
   margin-bottom: 80px;
 }
@@ -14,15 +16,15 @@
 
 .shape {
   display: flex;
-  width: 300px;
-  height: 200px;
+  width: 60vw;
+  height: 30vh;
   border-top-left-radius: 90px;
   border-bottom-left-radius: 90px;
   background: rgb(92, 92, 234);
   position: absolute;
   right: 0;
   z-index: -1;
-  top: 30%;
+  top: 4.2%;
 }
 
 .hero {
@@ -30,8 +32,9 @@
 }
 
 .hero-p {
+  width: 100%;
   text-align: center;
-  padding: 20px;
+  padding: 15px;
   line-height: 30px;
 }
 
@@ -53,7 +56,7 @@
 }
 
 .getit {
-  padding: 15px 23px;
+  padding: 10px 15px;
   border: none;
   margin: 3px;
   border-radius: 5px;
@@ -108,15 +111,15 @@
 
 .shape2 {
   display: flex;
-  width: 300px;
-  height: 200px;
+  width: 60vw;
+  height: 30vh;
   border-top-right-radius: 90px;
   border-bottom-right-radius: 90px;
   background: rgb(92, 92, 234);
   position: absolute;
   left: 0;
   z-index: -1;
-  top: 30%;
+  top: 28.5%;
 }
 
 .bookmark {
@@ -251,12 +254,15 @@ footer .socials img {
 }
 
 @media (min-width: 760px) {
-  #root {
+  main {
+    max-width: 1440px;
     width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    padding: 0 30px;
   }
 
   .simpleBookmark {
@@ -302,84 +308,87 @@ footer .socials img {
     margin-bottom: 100px;
   }
 
-  .bookmark{
+  .bookmark {
     text-align: left;
   }
 
-  .shape2{
-    width: 350px;
-    height: 280px;
+  .shape {
+    width: 40vw;
+    height: 30vh;
+    top: 6%;
+  }
+  .shape2 {
+    width: 40vw;
+    height: 30vh;
   }
 
-  .extention{
+  .extention {
     width: 500px;
   }
 
-  .cards{
+  .cards {
     display: flex;
     flex-direction: row;
     width: 100%;
   }
 
-  .card{
+  .card {
     margin: 10px;
   }
 
-  .card h1{
+  .card h1 {
     font-size: 1.7rem;
-    
   }
 
-  .card:first-child{
+  .card:first-child {
     margin-top: -80px;
   }
 
-  .card:nth-child(2){
+  .card:nth-child(2) {
     margin-top: 0;
   }
 
-  .card:last-child{
+  .card:last-child {
     margin-top: 80px;
   }
 
-  .faq{
+  .faq {
     width: 470px;
   }
 
-  .accordion{
+  .accordion {
     width: 470px;
   }
 
-  form{
+  form {
     min-width: 98.5vw;
     width: 100%;
   }
 
-  input{
+  input {
     width: 50vw;
   }
 
-  form button{
+  form button {
     width: 30vw;
     margin: 10px;
   }
 
-  footer{
+  footer {
     flex-direction: row;
     padding: 3px;
     width: 100%;
     justify-content: space-around;
   }
-  
-  footer ul{
+
+  footer ul {
     display: flex;
     justify-content: space-around;
     align-items: center;
   }
 
-  footer ul li{
+  footer ul li {
     margin: 0 10px;
     padding: 5px 10px;
-    
   }
 }
