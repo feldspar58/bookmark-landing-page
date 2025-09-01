@@ -4,27 +4,30 @@ body {
 
 main {
   padding: 25px;
+  max-width: 1440px;
+  margin: 0 auto;
 }
+
 .navbar {
   margin-bottom: 80px;
 }
 
 .firstTab {
   margin-bottom: 50px;
-  position: relative;
 }
 
 .shape {
   display: flex;
-  width: 60vw;
-  height: 30vh;
-  border-top-left-radius: 90px;
-  border-bottom-left-radius: 90px;
+  width: clamp(15rem, 40vw, 30rem);
+  height: clamp(10rem, 30vw, 20rem);
+  transform: translateY(-50%);
+  border-top-left-radius: 110px;
+  border-bottom-left-radius: 110px;
   background: rgb(92, 92, 234);
   position: absolute;
   right: 0;
   z-index: -1;
-  top: 4.2%;
+  top: 7%;
 }
 
 .hero {
@@ -56,9 +59,9 @@ main {
 }
 
 .getit {
-  padding: 10px 15px;
+  padding: 7px 9px;
   border: none;
-  margin: 3px;
+  margin: 2px;
   border-radius: 5px;
 }
 
@@ -111,15 +114,15 @@ main {
 
 .shape2 {
   display: flex;
-  width: 60vw;
-  height: 30vh;
-  border-top-right-radius: 90px;
-  border-bottom-right-radius: 90px;
+  width: clamp(15rem, 40vw, 30rem);
+  height: clamp(10rem, 30vw, 20rem);
+  border-top-right-radius: 110px;
+  border-bottom-right-radius: 110px;
   background: rgb(92, 92, 234);
   position: absolute;
   left: 0;
   z-index: -1;
-  top: 28.5%;
+  top: 28%;
 }
 
 .bookmark {
@@ -255,14 +258,7 @@ footer .socials img {
 
 @media (min-width: 760px) {
   main {
-    max-width: 1440px;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 30px;
+    place-items: center;
   }
 
   .simpleBookmark {
@@ -313,13 +309,10 @@ footer .socials img {
   }
 
   .shape {
-    width: 40vw;
-    height: 30vh;
-    top: 6%;
+    top: 13%;
   }
   .shape2 {
-    width: 40vw;
-    height: 30vh;
+    top: 36%;
   }
 
   .extention {

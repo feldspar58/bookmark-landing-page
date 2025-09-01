@@ -1,9 +1,6 @@
 function App() {
   return (
     <>
-      <span className="shape"></span>
-      <span className="shape2"></span>
-
       <main>
         <NavBar />
         <FirstTab />
@@ -11,8 +8,8 @@ function App() {
         <ExtentionTab />
         <Faq />
       </main>
-        <EmailSubscription />
-        <Footer />
+      <EmailSubscription />
+      <Footer />
     </>
   );
 }
@@ -36,6 +33,7 @@ function FirstTab() {
   return (
     <div className="simpleBookmark">
       <div className="firstTab">
+        <span className="shape"></span>
         <img src="/images/illustration-hero.svg" alt="hero" className="hero" />
       </div>
 
@@ -110,7 +108,7 @@ function FeaturesList2({ img, h1, p }) {
   return (
     <div className="simpleBookmark2">
       <div className="secondTab">{img}</div>
-
+      <span className="shape2"></span>
       <div className="bookmark">
         <h1>{h1}</h1>
         <p>{p}</p>
