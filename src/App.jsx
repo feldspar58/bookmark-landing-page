@@ -1,3 +1,52 @@
+const Tab = [
+  {
+    TabImage: (
+      <img
+        src="/public/images/illustration-features-tab-1.svg"
+        alt="tab-1 image"
+      />
+    ),
+    TabHeading: <h1>Bookmark in one click</h1>,
+    TabWord: (
+      <p>
+        Organize your bookmarks however you like. Our simple drag-and-drop
+        interface gives you complete control over how you manage your favourite
+        sites.
+      </p>
+    ),
+  },
+  {
+    TabImage: (
+      <img
+        src="/public/images/illustration-features-tab-2.svg"
+        alt="tab-2 image"
+      />
+    ),
+    TabHeading: <h1>Intelligent search</h1>,
+    TabWord: (
+      <p>
+        Our powerful search feature will help you find saved sites in no time at
+        all. No need to trawl through all of your bookmarks.
+      </p>
+    ),
+  },
+  {
+    TabImage: (
+      <img
+        src="/public/images/illustration-features-tab-3.svg"
+        alt="tab-3 image"
+      />
+    ),
+    TabHeading: <h1>Share your bookmarks</h1>,
+    TabWord: (
+      <p>
+        Easily share your bookmarks and collections with others. Create a
+        shareable link that you can send at the click of a button.
+      </p>
+    ),
+  },
+];
+
 function App() {
   return (
     <>
@@ -112,6 +161,7 @@ function FeaturesList2({ img, h1, p }) {
       <div className="bookmark">
         <h1>{h1}</h1>
         <p>{p}</p>
+        <MoreInfo className="more style">More Info</MoreInfo>
       </div>
     </div>
   );
@@ -204,10 +254,16 @@ function Faq() {
         />
         <hr />
       </div>
-      <div className="mores">
-        <button className="more">More info</button>
-      </div>
+      <MoreInfo className="more">More Info</MoreInfo>
     </>
+  );
+}
+
+function MoreInfo({ children, className }) {
+  return (
+    <div className="mores">
+      <button className={className}>{children}</button>
+    </div>
   );
 }
 
