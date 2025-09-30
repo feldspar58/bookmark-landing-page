@@ -12,22 +12,79 @@ main {
   margin-bottom: 80px;
 }
 
+.navbar-nav .nav-link .active {
+  color: white;
+}
+
+.navbar-toggler {
+  border: 0;
+}
+
+.deskNav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+}
+
+.nav-item .nav-link {
+  padding: 1px;
+  place-self: center;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  color: white;
+}
+
+.deskList {
+  display: none;
+}
+
+.nav-item .active {
+  border: 2px solid white;
+  padding: 10px 95px;
+  border-radius: 5px;
+}
+
+.nav-item .nav-link {
+  color: white;
+}
+
+.social {
+  position: absolute;
+  place-self: center;
+  bottom: 0;
+}
+
+.social img {
+  margin: 20px;
+}
+
+.offcanvas {
+  background-color: hsla(271, 40%, 35%, 0.376);
+  backdrop-filter: blur(5px);
+  color: white;
+}
+
 .firstTab {
   margin-bottom: 50px;
 }
 
+.simpleBookmark {
+  position: relative;
+}
+
 .shape {
   display: flex;
-  width: clamp(15rem, 40vw, 30rem);
+  width: clamp(15rem, 35vw, 50rem);
   height: clamp(10rem, 30vw, 20rem);
   transform: translateY(-50%);
   border-top-left-radius: 110px;
   border-bottom-left-radius: 110px;
   background: rgb(92, 92, 234);
   position: absolute;
-  right: 0;
+  right: -2.8%;
   z-index: -1;
-  top: 7%;
+  top: 19%;
 }
 
 .hero {
@@ -53,9 +110,15 @@ main {
   margin-bottom: 80px;
 }
 
-.getit:first-child {
+.get-it .active {
   background-color: hsl(240, 94%, 57%);
   color: white;
+}
+
+.get-it .active:hover {
+  background-color: white;
+  border: 1px solid hsl(240, 94%, 57%);
+  color: hsl(240, 94%, 57%);
 }
 
 .getit {
@@ -99,6 +162,12 @@ main {
   color: white;
 }
 
+.card button:hover {
+  border: 1px solid hsl(240, 81%, 58%);
+  color: hsl(240, 81%, 58%);
+  background-color: white;
+}
+
 .features {
   display: flex;
   justify-content: center;
@@ -110,8 +179,22 @@ main {
 }
 
 .featurelist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   margin-bottom: 80px;
+}
+
+.featurelist1 {
+  cursor: pointer;
+  width: 200px;
+}
+
+.featurelist .active {
+  border-bottom: 2px solid orangered;
+  color: orangered;
 }
 
 .secondTab {
@@ -119,9 +202,13 @@ main {
   position: relative;
 }
 
+.secondTab img{
+  width: 100%;
+}
+
 .shape2 {
   display: flex;
-  width: clamp(15rem, 40vw, 30rem);
+  width: clamp(15rem, 35vw, 50rem);
   height: clamp(10rem, 30vw, 20rem);
   border-top-right-radius: 110px;
   border-bottom-right-radius: 110px;
@@ -130,6 +217,7 @@ main {
   left: 0;
   z-index: -1;
   top: 28%;
+  left: -15%;
 }
 
 .bookmark {
@@ -138,6 +226,10 @@ main {
   text-align: center;
   padding: 20px;
   line-height: 30px;
+}
+
+.simpleBookmark{
+  position: relative;
 }
 
 .extention {
@@ -161,11 +253,19 @@ main {
   margin: 15px 20px;
 }
 
+.accordions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+}
+
 .accordion {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 5px;
+  cursor: pointer;
 }
 
 .accordion p {
@@ -178,8 +278,24 @@ main {
   cursor: pointer;
 }
 
+.accordions .active {
+  color: orangered;
+}
+
+.accordion:hover {
+  color: orangered;
+}
+
+.arrow {
+  transition: transform 0.5s ease;
+}
+
+.close {
+  transform: rotate(180deg);
+}
+
 .answer {
-  display: none;
+  width: 300px;
 }
 
 .mores {
@@ -268,6 +384,59 @@ footer .socials img {
 }
 
 @media (min-width: 760px) {
+  .deskNav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 60px;
+  }
+
+  .offcanvas{
+    display: none;
+  }
+
+  .navbar-brand {
+    padding-top: 0;
+  }
+
+  .deskList {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0 20px;
+  }
+
+  li {
+    margin: 0 25px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  li:hover {
+    color: orangered;
+  }
+
+  ul .active {
+    background-color: orangered;
+    padding: 5px 35px;
+    border-radius: 5px;
+    color: white;
+  }
+
+  ul .active:hover {
+    border: 1px solid orangered;
+    background-color: white;
+    color: orangered;
+  }
+
+  .navbar-toggler {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: none;
+  }
+
   main {
     place-items: center;
   }
@@ -297,17 +466,25 @@ footer .socials img {
   .featurelist {
     width: 600px;
     display: flex;
+    flex-direction: row;
+    align-items: center;
     border-bottom: 1px solid gray;
   }
 
   .featurelist1 {
-    margin: 5px;
     width: 100%;
+    cursor: pointer;
+  }
+
+  .featurelist1:hover {
+    color: orangered;
   }
 
   .simpleBookmark2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    position: relative;
   }
 
   .secondTab {
@@ -326,10 +503,10 @@ footer .socials img {
   }
 
   .shape {
-    top: 13%;
+    top: 60%;
   }
   .shape2 {
-    top: 36%;
+    top: 15%;
   }
 
   .extention {
@@ -368,6 +545,10 @@ footer .socials img {
 
   .accordion {
     width: 470px;
+  }
+
+  .answer{
+    width: 450px;
   }
 
   form {

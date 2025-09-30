@@ -1,57 +1,10 @@
-const Tab = [
-  {
-    TabImage: (
-      <img
-        src="/public/images/illustration-features-tab-1.svg"
-        alt="tab-1 image"
-      />
-    ),
-    TabHeading: <h1>Bookmark in one click</h1>,
-    TabWord: (
-      <p>
-        Organize your bookmarks however you like. Our simple drag-and-drop
-        interface gives you complete control over how you manage your favourite
-        sites.
-      </p>
-    ),
-  },
-  {
-    TabImage: (
-      <img
-        src="/public/images/illustration-features-tab-2.svg"
-        alt="tab-2 image"
-      />
-    ),
-    TabHeading: <h1>Intelligent search</h1>,
-    TabWord: (
-      <p>
-        Our powerful search feature will help you find saved sites in no time at
-        all. No need to trawl through all of your bookmarks.
-      </p>
-    ),
-  },
-  {
-    TabImage: (
-      <img
-        src="/public/images/illustration-features-tab-3.svg"
-        alt="tab-3 image"
-      />
-    ),
-    TabHeading: <h1>Share your bookmarks</h1>,
-    TabWord: (
-      <p>
-        Easily share your bookmarks and collections with others. Create a
-        shareable link that you can send at the click of a button.
-      </p>
-    ),
-  },
-];
+import { useState } from "react";
 
 function App() {
   return (
     <>
+      <NavBar />
       <main>
-        <NavBar />
         <FirstTab />
         <FeaturesTab />
         <ExtentionTab />
@@ -66,13 +19,85 @@ function App() {
 function NavBar() {
   return (
     <>
-      <div className="navbar">
-        <img src="/images/logo-bookmark.svg" alt="img-logo" />
-        <img
-          src="/images/icon-hamburger.svg"
-          alt="menu-icon"
-          className="hamburger-menu"
-        />
+      <div className="navbar bg-body-tertiary">
+        <div className="deskNav">
+          <a className="navbar-brand" href="#">
+            <img src="/images/logo-bookmark.svg" alt="img-logo" />
+          </a>
+          <ul className="deskList">
+            <li>features</li>
+            <li>pricing</li>
+            <li>contact</li>
+            <li className="active">login</li>
+          </ul>
+          <div
+            className="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div className="offcanvas-header">
+              <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
+                <img src="/images/logo-bookmark.svg" alt="img-logo" />
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="offcanvas-body">
+              <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <hr />
+                <li className="nav-item">
+                  <a className="nav-link" href="#">
+                    features
+                  </a>
+                </li>
+                <hr />
+                <li className="nav-item">
+                  <a className="nav-link" href="#">
+                    pricing
+                  </a>
+                </li>
+                <hr />
+                <li className="nav-item">
+                  <a className="nav-link" href="#">
+                    contact
+                  </a>
+                </li>
+                <hr />
+                <li className="nav-item">
+                  <a className="nav-link active" href="#">
+                    login
+                  </a>
+                </li>
+              </ul>
+              <div className="social">
+                <img
+                  src="/public/images/icon-facebook.svg"
+                  alt="facebook-icon"
+                />
+                <img src="/public/images/icon-twitter.svg" alt="twitter-icon" />
+              </div>
+            </div>
+          </div>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
+          >
+            <img
+              src="/images/icon-hamburger.svg"
+              alt="menu-icon"
+              className="hamburger-menu"
+            />
+          </button>
+        </div>
       </div>
     </>
   );
@@ -93,19 +118,25 @@ function FirstTab() {
           a new browser tab and see your sites load instantly. Try it for free.
         </p>
         <div className="get-it">
-          <GetIt word="Get it on Chrome" />
-          <GetIt word="Get it on Firefox" />
+          <GetIt className="getit active">Get it on Chrome</GetIt>
+          <GetIt className="getit">Get it on Firefox</GetIt>
         </div>
       </div>
     </div>
   );
 }
 
-function GetIt({ word }) {
-  return <button className="getit">{word}</button>;
+function GetIt({ children, className }) {
+  return <button className={className}>{children}</button>;
 }
 
 function FeaturesTab() {
+  const [activeTab, setActiveTab] = useState(0);
+
+  function handleTabClick(index) {
+    setActiveTab(index);
+  }
+
   return (
     <>
       <div className="feature">
@@ -120,50 +151,111 @@ function FeaturesTab() {
 
         <div className="featurelist">
           <hr />
-          <FeaturesList1 Name="Simple Bookmarking" />
+          <FeaturesList1
+            onClick={() => handleTabClick(0)}
+            isActive={activeTab === 0}
+          >
+            Simple Bookmarking
+          </FeaturesList1>
           <hr />
-          <FeaturesList1 Name="Speedy Searching" />
+          <FeaturesList1
+            onClick={() => handleTabClick(1)}
+            isActive={activeTab === 1}
+          >
+            Speedy Searching
+          </FeaturesList1>
           <hr />
-          <FeaturesList1 Name="Easy Sharing" />
+          <FeaturesList1
+            onClick={() => handleTabClick(2)}
+            isActive={activeTab === 2}
+          >
+            Easy Sharing
+          </FeaturesList1>
           <hr />
         </div>
       </div>
       <div className="tab">
-        <FeaturesList2
-          img=<img
-            src="/images/illustration-features-tab-1.svg"
-            alt="hero"
-            className="img-1"
-          />
-          h1="Bookmark in one click"
-          p=" Organize your bookmarks however you like. Our simple drag-and-drop
-          interface gives you complete control over how you manage your
-          favourite sites."
-        />
+        <FeaturesList2 activeTab={activeTab} />
       </div>
     </>
   );
 }
 
-function FeaturesList1({ Name }) {
+function FeaturesList1({ children, isActive, onClick }) {
   return (
-    <div className="featurelist1">
-      <p>{Name}</p>
+    <div
+      className={`featurelist1 ${isActive ? "active" : "featurelist1"}`}
+      onClick={onClick}
+    >
+      <p>{children}</p>
     </div>
   );
 }
 
-function FeaturesList2({ img, h1, p }) {
+function FeaturesList2({ activeTab }) {
+  const Tab = [
+    {
+      TabImage: (
+        <img
+          src="/images/illustration-features-tab-1.svg"
+          alt="tab-1 image"
+        />
+      ),
+      TabHeading: <h1>Bookmark in one click</h1>,
+      TabWord: (
+        <p>
+          Organize your bookmarks however you like. Our simple drag-and-drop
+          interface gives you complete control over how you manage your
+          favourite sites.
+        </p>
+      ),
+    },
+    {
+      TabImage: (
+        <img
+          src="/images/illustration-features-tab-2.svg"
+          alt="tab-2 image"
+        />
+      ),
+      TabHeading: <h1>Intelligent search</h1>,
+      TabWord: (
+        <p>
+          Our powerful search feature will help you find saved sites in no time
+          at all. No need to trawl through all of your bookmarks.
+        </p>
+      ),
+    },
+    {
+      TabImage: (
+        <img
+          src="/images/illustration-features-tab-3.svg"
+          alt="tab-3 image"
+        />
+      ),
+      TabHeading: <h1>Share your bookmarks</h1>,
+      TabWord: (
+        <p>
+          Easily share your bookmarks and collections with others. Create a
+          shareable link that you can send at the click of a button.
+        </p>
+      ),
+    },
+  ];
+
+  const { TabImage, TabHeading, TabWord } = Tab[activeTab] || Tab[0];
+
   return (
-    <div className="simpleBookmark2">
-      <div className="secondTab">{img}</div>
-      <span className="shape2"></span>
-      <div className="bookmark">
-        <h1>{h1}</h1>
-        <p>{p}</p>
+    <>
+      <div className="simpleBookmark2">
+        <div className="secondTab">{TabImage}</div>
+        <span className="shape2"></span>
+        <div className="bookmark">
+          {TabHeading}
+          {TabWord}
+        </div>
         <MoreInfo className="more style">More Info</MoreInfo>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -178,48 +270,40 @@ function ExtentionTab() {
         </p>
       </div>
       <div className="cards">
-        <BrowserCard
-          img2=<img
-            src="/images/logo-chrome.svg"
-            alt="chrome"
-            className="img"
-          />
-          AddTo="Add to Chrome"
-          browserVersion="Minimum version 62"
-        />
-        <BrowserCard
-          img2=<img
-            src="/images/logo-firefox.svg"
-            alt="firefox"
-            className="img"
-          />
-          AddTo="Add to Firefox"
-          browserVersion="Minimum version 55"
-        />
-        <BrowserCard
-          img2=<img
+        <BrowserCard className="card">
+          <img src="/images/logo-chrome.svg" alt="chrome" className="img" />
+          <h1>Add to Chrome</h1>
+          <p>Minimum version 62</p>
+          <img src="/images/bg-dots.svg" alt="dots" className="dots" />
+          <button>Add & Install Extention</button>
+        </BrowserCard>
+
+        <BrowserCard className="card">
+          <img src="/images/logo-firefox.svg" alt="firefox" className="img" />
+          <h1>Add to Firefox</h1>
+          <p>Minimum version 55</p>
+          <img src="/images/bg-dots.svg" alt="dots" className="dots" />
+          <button>Add & Install Extention</button>
+        </BrowserCard>
+
+        <BrowserCard className="card">
+          <img
             src="/public/images/logo-Opera.svg"
             alt="Opera"
             className="img"
           />
-          AddTo="Add to Opera"
-          browserVersion="Minimum version 46"
-        />
+          <h1>Add to Opera</h1>
+          <p>Minimum version 46</p>
+          <img src="/images/bg-dots.svg" alt="dots" className="dots" />
+          <button>Add & Install Extention</button>
+        </BrowserCard>
       </div>
     </>
   );
 }
 
-function BrowserCard({ img2, AddTo, browserVersion }) {
-  return (
-    <div className="card">
-      {img2}
-      <h1>{AddTo}</h1>
-      <p>{browserVersion}</p>
-      <img src="/images/bg-dots.svg" alt="dots" className="dots" />
-      <button>Add & Install Extention</button>
-    </div>
-  );
+function BrowserCard({ children, className }) {
+  return <div className={className}>{children}</div>;
 }
 
 function Faq() {
@@ -268,13 +352,26 @@ function MoreInfo({ children, className }) {
 }
 
 function Accordion({ Question, Answers }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  function handleAccordion() {
+    setIsOpen(!isOpen);
+  }
+
   return (
     <>
-      <div className="accordion">
-        <p>{Question}</p>
-        <img src="/images/icon-arrow.svg" alt="arrow" />
+      <div className="accordions" onClick={handleAccordion}>
+        <div className={`accordion ${isOpen ? "active" : "accordion"}`}>
+          <p>{Question}</p>
+          <img
+            src="/images/icon-arrow.svg"
+            alt="arrow"
+            className={isOpen ? "arrow close" : "arrow"}
+          />
+        </div>
+
+        {isOpen && <div className="answer">{Answers}</div>}
       </div>
-      <div className="answer">{Answers}</div>
     </>
   );
 }
